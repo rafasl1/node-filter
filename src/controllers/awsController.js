@@ -1,3 +1,5 @@
+import filterController from '../utils/filterController'
+
 const AwsController = {
     async index(request, response) {
         const { fields } = request.query
@@ -44,18 +46,7 @@ const AwsController = {
             }
         ]
 
-
-        for(let i = 0; i < instances.length; i++){
-            Object.keys(instances[i]).forEach(key => {
-                let deleteKey = true
-
-                separatedFields.forEach(field => {
-                    if(key == field) deleteKey = false
-                })
-
-                if(deleteKey) delete (instances[i])[key]
-            });
-        }
+        filterController.filterResponseProperties(instances, separatedFields)
 
         return response.json(instances)
     
