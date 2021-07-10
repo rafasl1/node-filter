@@ -1,2 +1,2 @@
 # node-filter
-Node project to that filter fields on response
+NodeJS project to test filter fields in a response
